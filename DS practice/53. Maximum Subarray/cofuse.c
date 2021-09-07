@@ -3,7 +3,7 @@
 
 int maxSubArray(int* nums, int numsSize);
 int leetcode_input(int **nums);//Read the input format like: [1,-8,5,......] 
-
+int maxf(int num1, int num2);
 
 int main()
 {
@@ -81,23 +81,28 @@ int leetcode_input(int **nums)//Read the input format like: [1,-8,5,......]
 
 int maxSubArray(int* nums, int numsSize)
 {
-    int max, sum, i;
+    int max, sum, i, local_max;
     sum = 0;
     max = nums[0];
+    local_max = nums[0];
     for(i=0;i<numsSize;i++)
     {
-        sum = sum + nums[i];
-        if(sum >= max)
+        local_max =  maxf(nums[i],(local_max+nums[i]));
+        printf("localmax = %d\n",local_max);
+        if(local_max>max)
         {
-            max = sum;
-        }
-        if(sum<0)
-        {
-            sum = 0;
+            max = local_max;
         }
     }
     return max;
     
 
 }
-
+ int maxf(int num1, int num2)
+ {
+     if(num1>=num2)
+     {
+         return num1;
+     }
+     return num2;
+ }

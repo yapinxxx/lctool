@@ -81,13 +81,13 @@ int leetcode_input(int **nums)//Read the input format like: [1,-8,5,......]
 
 int maxSubArray(int* nums, int numsSize)
 {
-    int max, sum, i;
+    int i,max,sum;
     sum = 0;
     max = nums[0];
     for(i=0;i<numsSize;i++)
     {
         sum = sum + nums[i];
-        if(sum >= max)
+        if(sum > max)
         {
             max = sum;
         }
@@ -95,6 +95,7 @@ int maxSubArray(int* nums, int numsSize)
         {
             sum = 0;
         }
+
     }
     return max;
     
